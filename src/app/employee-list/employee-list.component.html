@@ -1,0 +1,36 @@
+<div style="text-align: center;margin-top:-20px;margin-bottom: 15px !important;">
+  <h3>Employee List </h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-responsive table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Qualification</th>
+          <th>Experience</th>
+          <th>Language</th>
+          <th>Address</th>
+          <th>Contact No</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of empIModel">
+          <td>{{emp.empName}} {{emp.empSurname}}</td>
+          <td>{{emp.qualification}}</td>
+          <td>{{emp.experience}}</td>
+          <td>{{emp.language}}</td>
+          <td>{{emp.address}}</td>
+          <td>{{emp.contactNumber}} </td>
+          <td>  
+             <a [routerLink]="['/Employee',emp.empId,'edit']" class="btn btn-primary">Edit</a>
+             <a (click)="deleteRecord(emp.empId)" id="{{emp.empId}}" class="btn btn-default">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+ <!--<router-outlet></router-outlet>-->

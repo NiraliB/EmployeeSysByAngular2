@@ -1,0 +1,86 @@
+<div style="text-align: center;margin-top:-20px;margin-bottom: 15px !important;">
+  <h3>Employee's Entry</h3>
+</div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Employee Name </label>
+        <input class="form-control" type="text" id="txtEmpName" name="txtEmpName" [(ngModel)] ="empModel.EmpName"/>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Surname </label>
+        <input class="form-control" type="text" id="txtSurname" name="txtSurname" [(ngModel)]="empModel.EmpSurname" />
+      </div>
+    </div>
+    <!-- Dropdown list --> 
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Qualification </label>
+        <select class="form-control" name="Qualification" [(ngModel)]="empModel.Qualification"  >
+        <option value="">Select Qualification</option>
+        <option *ngFor="let quali of assignQuali" >
+          {{quali.Degree}}
+        </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Radio Butons -->
+    <div class="col-md-2">
+      <div class="form-group">
+        <label> Experience </label>
+        <div class="radio" *ngFor="let exp of assignExp">
+          <label>
+        <input type="radio" class="radio" name="rdExperince" value={{exp.ExpName}} [(ngModel)] ="empModel.Experience" > {{exp.ExpName}}
+      </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="col-md-2">
+      <div class="form-group">
+        <label> Language </label>
+        <div class="col-md-12">
+          <div class="checkbox" *ngFor="let lang of assignLan">
+            <input type="checkbox" name="chkLangName_[{{lang.lanName}}]" 
+                   id="chLan_[{{lang.lanName}}]"  value="{{lang.lanName}}"
+                   [ngModel] ="langModel" 
+                   (click)="checkLangBox(lang.lanName,$event)"  /> {{lang.lanName}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control" name="textAddress" [(ngModel)] ="empModel.Address">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Contact No</label>
+        <input type="text" class="form-control" name="txtContactNo" [(ngModel)] ="empModel.ContactNumber">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-2">
+        <input type="button" (click)="empDataSave(empModel)" name="btnSave" id="btnSave" value="Save" class="btn btn-primary">
+      </div>
+      <div class="col-md-2">
+        <input type="button" (click)="cancelEmpData()" name="btnCancel" id="btnCancel" value="Cancel" class="btn btn-default">
+      </div>
+    </div>
+  </div>
